@@ -15,7 +15,7 @@ import lombok.Data;
 @Data   
 @Entity
 @NoArgsConstructor
-@Table(name= "PRODUCTO")
+@Table(name= "FACTURA")
 public class Factura {
     
         @Id
