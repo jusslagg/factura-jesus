@@ -20,18 +20,18 @@ public class FacturaController {
         factura.setCliente(cliente);
         factura.setVideojuego(videojuego);
         factura.setTotal(total);
-        facturaService.agregarFactura(factura);
+        facturaService.agregarUna(factura);
     }
 
     // Obtener todas las facturas
     @GetMapping
     public List<Factura> obtenerFacturas() {
-        return facturaService.obtenerFacturas();
+        return facturaService.obtenerFactura();
     }
 
     // Eliminar una factura por ID
     @DeleteMapping("/{id}")
-    public void eliminarFactura(@PathVariable Long id) {
+    public void eliminarFactura(@PathVariable int id) {
         facturaService.eliminarFactura(id);
     }
 }

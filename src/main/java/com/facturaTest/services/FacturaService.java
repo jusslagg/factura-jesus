@@ -1,26 +1,31 @@
 package com.facturaTest.services;
 
-import com.facturaTest.model.Factura;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.facturaTest.model.Factura;
+import com.facturaTest.repository.FacturaRepository;
 
 @Service
 public class FacturaService {
-    private List<Factura> facturas = new ArrayList<>();
-    private Long nextId = 1L;
+    
+    @Autowired
+    private FacturaRepository facturaRepository;
 
-    public void agregarFactura(Factura factura) {
-        factura.setId(nextId++);
-        facturas.add(factura);
+    public Factura obteneFacturaPorId(int id) {
+        return (Factura) facturaRepository.findById(id);
     }
 
-    public List<Factura> obtenerFacturas() {
-        return facturas;
+    public List<Factura> obtenerFactura() {
+    return facturaRepository.findAll();
     }
 
-    public void eliminarFactura(Long id) {
-        facturas.removeIf(factura -> factura.getId().equals(id));
+    public Factura agregarUna(Factura factura) {
+        return facturaRepository.save(factura);
     }
+
+    public void eliminarFactura(int id) {
+        throw new UnsupportedOperationException("Unimplemented method 'eliminarFactura'");
+    }
+
 }

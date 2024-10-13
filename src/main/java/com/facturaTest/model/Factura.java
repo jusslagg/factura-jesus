@@ -1,42 +1,52 @@
 package com.facturaTest.model;
 
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.NoArgsConstructor;
+import jakarta.persistence.Id;
+import lombok.Data;
+    
+    
+@Data   
+@Entity
+@NoArgsConstructor
+@Table(name= "PRODUCTO")
 public class Factura {
-    private Long id;
-    private String cliente; // Nombre del cliente
-    private String videojuego; // Nombre del videojuego
-    private double total;
+    
+        @Id
+        @GeneratedValue( strategy = GenerationType.IDENTITY)
+        private int id;
+    
+        @Column(name ="NOMBRE")
+        private String nombre;
+    
+        @Column(name ="COLOR")
+        private String color;
 
-    // Getters y Setters
+        @Column(name ="PRECIO")
+        private int precio;
 
-    public Long getId() {
-        return id;
+        @ManyToOne(fetch = FetchType.LAZY)
+        private Persona persona;
+
+        public void setCliente(String cliente) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'setCliente'");
+        }
+
+        public void setVideojuego(String videojuego) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'setVideojuego'");
+        }
+
+        public void setTotal(double total) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'setTotal'");
+        }
+
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
-
-    public String getVideojuego() {
-        return videojuego;
-    }
-
-    public void setVideojuego(String videojuego) {
-        this.videojuego = videojuego;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-}
